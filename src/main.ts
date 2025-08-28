@@ -28,3 +28,22 @@ function formatDuration(totalSeconds: number): string {
   const seconds = totalSeconds % 60;
   return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 }
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const title = titleInput.value.trim();
+  const durationStr = durationInput.value.trim();
+  const duration = parseDuration(durationStr);
+
+  if (!title || duration === null) {
+    alert("Fel format, skriv t.ex. '2:45'");
+    return;
+  }
+  const track: Track = { title, duration };
+  tracks.push(track);
+
+  // reset form
+  titleInput.value = "";
+  durationInput.value = "";
+});
