@@ -29,6 +29,21 @@ function formatDuration(totalSeconds: number): string {
   return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 }
 
+function render() {
+  list.innerHTML = "";
+
+  let totalSeconds = 0;
+
+  for (const track of tracks) {
+    const li = document.createElement("li");
+    li.textContent = `${track.title} (${formatDuration(track.duration)})`;
+    list.appendChild(li);
+
+    totalSeconds += track.duration;
+  }
+  totalEl.textContent = formatDuration(totalSeconds);
+}
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -46,4 +61,6 @@ form.addEventListener("submit", (e) => {
   // reset form
   titleInput.value = "";
   durationInput.value = "";
+
+  render();
 });
