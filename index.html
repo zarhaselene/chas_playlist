@@ -4,12 +4,14 @@
     <meta charset="utf-8" />
     <title>Playlist Builder</title>
     <link rel="stylesheet" href="styles.css" />
+    <!-- font awesome icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
   </head>
   <body>
+    <!-- animated floating music notes background -->
     <div class="floating-notes">
       <div class="notes"><i class="fa-solid fa-music"></i></div>
       <div class="notes"><i class="fa-solid fa-music"></i></div>
@@ -17,6 +19,7 @@
       <div class="notes"><i class="fa-solid fa-music"></i></div>
       <div class="notes"><i class="fa-solid fa-music"></i></div>
     </div>
+    <!-- main app container -->
     <div class="container">
       <div class="header">
         <h1>Playlist</h1>
@@ -25,6 +28,7 @@
       <div class="form-container">
         <form id="track-form">
           <div class="form-row">
+            <!-- song title input -->
             <div class="input-group">
               <label for="title"
                 ><i class="fa-solid fa-music"></i> Song Title</label
@@ -36,6 +40,7 @@
                 required
               />
             </div>
+            <!-- duration input -->
             <div class="input-group">
               <label for="duration"
                 ><i class="fa-regular fa-clock"></i> Duration</label
@@ -48,15 +53,18 @@
                 required
               />
             </div>
+            <!-- add song button -->
             <button type="submit" class="submit-btn">Add Song</button>
           </div>
         </form>
 
+        <!-- playlist section -->
         <div class="playlist">
           <h2>My Songs</h2>
+          <!-- list of tracks -->
           <ul id="list"></ul>
 
-          <!-- empty state -->
+          <!-- empty state message -->
           <div class="empty-state">
             <div class="empty-state-icon">
               <i class="fa-solid fa-music"></i>
@@ -66,6 +74,7 @@
         </div>
       </div>
 
+      <!-- total play time section -->
       <div class="total-container">
         <div class="total-label">Total Play Time</div>
         <div class="total-wrapper">

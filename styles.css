@@ -1,3 +1,4 @@
+/* reset and base styles */
 * {
   padding: 0;
   margin: 0;
@@ -5,6 +6,7 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* main background and layout */
 body {
   background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
   min-height: 100vh;
@@ -13,6 +15,7 @@ body {
   overflow-x: hidden;
 }
 
+/* floating music notes animation */
 .floating-notes {
   position: fixed;
   top: -30px;
@@ -30,6 +33,7 @@ body {
   animation: float 26s ease-in-out infinite;
 }
 
+/* different note positions and delays */
 .notes:nth-child(1) {
   left: 10%;
   animation-delay: 0s;
@@ -51,6 +55,7 @@ body {
   animation-delay: 4s;
 }
 
+/* animation for floating notes */
 @keyframes float {
   0%,
   100% {
@@ -66,6 +71,7 @@ body {
   }
 }
 
+/* main container for app */
 .container {
   max-width: 750px;
   margin: 0 auto;
@@ -74,6 +80,7 @@ body {
   overflow: hidden;
 }
 
+/* header section */
 .header {
   background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
   padding: 40px 30px;
@@ -81,6 +88,7 @@ body {
   color: white;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+/* form styles */
 .form-container {
   padding: 40px 30px;
 }
@@ -141,6 +149,7 @@ input::placeholder {
   font-style: italic;
 }
 
+/* add song button */
 .submit-btn {
   background: linear-gradient(45deg, #ff6b9d, #c44569);
   color: white;
@@ -163,6 +172,7 @@ input::placeholder {
     0 0 0 1px rgba(255, 255, 255, 0.3) inset;
 }
 
+/* playlist section */
 .playlist {
   margin-bottom: 20px;
 }
@@ -198,6 +208,7 @@ input::placeholder {
   border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
+/* each track in the playlist */
 .track-item {
   background: white;
   margin-bottom: 15px;
@@ -229,6 +240,7 @@ input::placeholder {
   color: #ff6b9d;
 }
 
+/* delete button */
 .delete-btn {
   background: #ff8fab;
   color: white;
@@ -253,6 +265,7 @@ input::placeholder {
     0 0 0 1px rgba(255, 255, 255, 0.5) inset;
 }
 
+/* total play time section */
 .total-container {
   background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
   color: white;
@@ -292,6 +305,7 @@ input::placeholder {
   gap: 10px;
 }
 
+/* empty playlist */
 .empty-state {
   text-align: center;
   padding: 50px 20px;
@@ -306,6 +320,7 @@ input::placeholder {
   animation: bounce 3s ease-in-out infinite;
 }
 
+/* bounce animation for empty state icon */
 @keyframes bounce {
   0%,
   100% {
