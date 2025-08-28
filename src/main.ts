@@ -9,7 +9,7 @@ type Track = {
   duration: number;
 };
 
-const tracks: Track[] = [];
+let tracks: Track[] = [];
 
 function parseDuration(input: string): number | null {
   const parts = input.split(":");
@@ -32,15 +32,58 @@ function formatDuration(totalSeconds: number): string {
 function render() {
   list.innerHTML = "";
 
+  // hide/show empty state
+  const emptyState = document.querySelector(".empty-state") as HTMLElement;
+  if (tracks.length === 0) {
+    emptyState.style.display = "";
+  } else {
+    emptyState.style.display = "none";
+  }
+
   let totalSeconds = 0;
 
-  for (const track of tracks) {
+  tracks.forEach((track, index) => {
     const li = document.createElement("li");
-    li.textContent = `${track.title} (${formatDuration(track.duration)})`;
-    list.appendChild(li);
+    li.className = "track-item";
 
+    const infoDiv = document.createElement("div");
+    infoDiv.className = "track-info";
+
+    const titleDiv = document.createElement("div");
+    titleDiv.className = "track-title";
+    titleDiv.textContent = track.title;
+    infoDiv.appendChild(titleDiv);
+
+    const durationDiv = document.createElement("div");
+    durationDiv.className = "track-duration";
+    // clock icon
+    const clockIcon = document.createElement("i");
+    clockIcon.className = "fa-regular fa-clock";
+    durationDiv.appendChild(clockIcon);
+    durationDiv.append(` ${formatDuration(track.duration)}`);
+    infoDiv.appendChild(durationDiv);
+
+    li.appendChild(infoDiv);
+
+    // delete button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.className = "delete-btn";
+    deleteBtn.setAttribute("aria-label", `Delete ${track.title}`);
+    deleteBtn.title = `Delete ${track.title}`;
+    // trash icon
+    const trashIcon = document.createElement("i");
+    trashIcon.className = "fa-solid fa-trash-can";
+    deleteBtn.appendChild(trashIcon);
+    deleteBtn.addEventListener("click", () => {
+      tracks = tracks.filter((_, i) => i !== index);
+      render();
+    });
+    li.appendChild(deleteBtn);
+
+    list.appendChild(li);
     totalSeconds += track.duration;
-  }
+  });
+
   totalEl.textContent = formatDuration(totalSeconds);
 }
 
@@ -55,6 +98,7 @@ form.addEventListener("submit", (e) => {
     alert("Fel format, skriv t.ex. '2:45'");
     return;
   }
+
   const track: Track = { title, duration };
   tracks.push(track);
 
