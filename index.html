@@ -4,18 +4,75 @@
     <meta charset="utf-8" />
     <title>Playlist Builder</title>
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
   </head>
   <body>
-    <h1>Playlist Builder</h1>
+    <div class="floating-notes">
+      <div class="notes"><i class="fa-solid fa-music"></i></div>
+      <div class="notes"><i class="fa-solid fa-music"></i></div>
+      <div class="notes"><i class="fa-solid fa-music"></i></div>
+      <div class="notes"><i class="fa-solid fa-music"></i></div>
+      <div class="notes"><i class="fa-solid fa-music"></i></div>
+    </div>
+    <div class="container">
+      <div class="header">
+        <h1>Playlist</h1>
+      </div>
 
-    <form id="track-form">
-      <input id="title" type="text" placeholder="Titel" required />
-      <input id="duration" type="text" placeholder="mm:ss" required />
-      <button type="submit">Lägg till</button>
-    </form>
+      <div class="form-container">
+        <form id="track-form">
+          <div class="form-row">
+            <div class="input-group">
+              <label for="title"
+                ><i class="fa-solid fa-music"></i> Song Title</label
+              >
+              <input
+                id="title"
+                type="text"
+                placeholder="What's your favorite song?"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <label for="duration"
+                ><i class="fa-regular fa-clock"></i> Duration</label
+              >
+              <input
+                id="duration"
+                type="text"
+                placeholder="mm:ss"
+                pattern="[0-9]{1,2}:[0-5][0-9]"
+                required
+              />
+            </div>
+            <button type="submit" class="submit-btn">Add Song</button>
+          </div>
+        </form>
 
-    <ul id="list"></ul>
-    <p>Total tid: <span id="total">0:00</span></p>
+        <div class="playlist">
+          <h2>My Songs</h2>
+          <ul id="list"></ul>
+
+          <!-- empty state -->
+          <div class="empty-state">
+            <div class="empty-state-icon">
+              <i class="fa-solid fa-music"></i>
+            </div>
+            <p>Your playlist is empty! Add some songs!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="total-container">
+        <div class="total-label">Total Play Time</div>
+        <div class="total-wrapper">
+          <i class="fa-regular fa-clock"></i> <span id="total">0:00</span>
+        </div>
+      </div>
+    </div>
 
     <script type="module" src="dist/main.js"></script>
   </body>
